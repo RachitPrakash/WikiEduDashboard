@@ -105,6 +105,10 @@ class CourseCreationManager
                              else
                                [Campaign.default_campaign]
                              end
+                            else
+                              @invalid_reason = I18n.t('courses.error.no_campaigns_available')
+                              raise NoCampaignsError.new('No campaigns available for course creation')
+                            end
   end
 
   def add_instructor_to_course
